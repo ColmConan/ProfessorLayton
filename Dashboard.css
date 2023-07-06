@@ -1,0 +1,39 @@
+body 
+{ 
+  background-color: black; 
+}
+h1 {
+  color: white;
+}
+#dynamicImage {
+  height: 1375px;
+  width: 2870px;
+  background-image: url(/images/DashboardArt3.png);
+  background-size: cover;
+}
+.btn {
+  background: #695a33;
+  background-image: -webkit-linear-gradient(top, #695a33, #ffaa00);
+  background-image: -moz-linear-gradient(top, #695a33, #ffaa00);
+  background-image: -ms-linear-gradient(top, #695a33, #ffaa00);
+  background-image: -o-linear-gradient(top, #695a33, #ffaa00);
+  background-image: linear-gradient(to bottom, #695a33, #ffaa00);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 50px;
+  padding: 11px 40px 10px 40px;
+  text-decoration: none;
+  margin-right: 20px; /* Add right margin of 20px */
+  margin-top: 20px; /* Add right margin of 20px */
+  width: 380px;
+}
+.btn:last-child {
+  margin-right: 0; /* Remove right margin for the last button */
+}
+.btn:hover {
+  background: #ffaa00;
+  text-decoration: none;
+}

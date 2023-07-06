@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Puzzle 7</title>
+  <link rel="stylesheet" href="puzzle1.css">
+  <script>
+    var counter = 0;
+    var audioElement = new Audio('/audio/PuzzleMusic.mp3');
+    var PageFlip = new Audio('/audio/PageFlip2.mp4');
+    var videoElement;
+
+    function changehint() 
+    { 
+      PageFlip.play();
+      counter++;
+      if (counter % 5 === 1) 
+      { changeImage('/images/Hints/Puzzle7/Hint1.png'); } 
+      else if (counter % 5 === 2) 
+      { changeImage('/images/Hints/Puzzle7/Hint2.png'); }
+      else if (counter % 5 === 3) 
+      { changeImage('/images/Hints/Puzzle7/Hint3.png'); }
+      else if (counter % 5 === 4) 
+      { changeImage('/images/Hints/Puzzle7/Hint4.png'); }
+      else
+      { changeImage('/images/Puzzle7/Puzzle7-2.png'); }
+    }
+    function changeImage(imageUrl) 
+    {
+      var imageElement = document.getElementById("dynamicImage");
+      imageElement.src = imageUrl;
+    }
+    function redirectToDashboard() 
+    { window.location.href = "Dashboard.html"; }
+
+    
+    function Answer() 
+    {
+      var userInput = document.getElementById("Answer").value.toLowerCase();
+      if (userInput !== "53") 
+      {
+        playIncorrectVideo();
+      }
+      else
+      {
+        playCorrectVideo();
+      }
+    }
+
+    function playIncorrectVideo() {
+  videoElement = document.createElement("video");
+  videoElement.src = "/audio/IncorrectFinal.mp4";
+  videoElement.type = "video/mp4";
+  videoElement.autoplay = true;
+  videoElement.muted = false;
+  videoElement.width = 1980;
+  videoElement.height = 1080;
+
+  var bodyElement = document.getElementsByTagName("body")[0];
+  bodyElement.appendChild(videoElement);
+
+  audioElement.pause();
+  videoElement.addEventListener("ended", function() {
+    videoElement.remove();
+    audioElement.currentTime = 0;
+    audioElement.play();
+    // Edit here
+    var audioFiles = [
+      "/audio/SolvedIncorrectly/116.wav",
+      "/audio/SolvedIncorrectly/117.wav",
+      "/audio/SolvedIncorrectly/118.wav"
+    ];
+    var randomIndex = Math.floor(Math.random() * audioFiles.length);
+    var randomAudioFile = audioFiles[randomIndex];
+    playRandomAudio(randomAudioFile);
+  });
+}
+
+function playCorrectVideo() 
+{
+  videoElement = document.createElement("video");
+  videoElement.src = "/audio/CorrectFinal.mp4";
+  videoElement.type = "video/mp4";
+  videoElement.autoplay = true;
+  videoElement.muted = false;
+  videoElement.width = 1980;
+  videoElement.height = 1080;
+
+  var bodyElement = document.getElementsByTagName("body")[0];
+  bodyElement.appendChild(videoElement);
+
+  audioElement.pause();
+  videoElement.addEventListener("ended", function() {
+    videoElement.remove();
+    audioElement.currentTime = 0;
+    audioElement.play();
+    showSolutionImages();
+    // Edit here
+    var audioFiles = [
+      "/audio/SolvedCorrectly/110.wav",
+      "/audio/SolvedCorrectly/111.wav",
+      "/audio/SolvedCorrectly/112.wav",
+      "/audio/SolvedCorrectly/113.wav",
+      "/audio/SolvedCorrectly/114.wav",
+      "/audio/SolvedCorrectly/115.wav"
+    ];
+    var randomIndex = Math.floor(Math.random() * audioFiles.length);
+    var randomAudioFile = audioFiles[randomIndex];
+    playRandomAudio(randomAudioFile);
+  });
+}
+
+
+    function playRandomAudio(audioFile) 
+    {
+      var audioElement = new Audio(audioFile);
+      audioElement.play();
+    }
+
+    function showSolutionImages() {
+      var imageElement1 = document.createElement("img");
+      imageElement1.src = "/images/Puzzle7/Puzzle7Solution.png";
+      imageElement1.height = 540;
+      imageElement1.width = 990;
+
+      var imageElement2 = document.createElement("img");
+      imageElement2.src = "/images/Puzzle7/Puzzle7Solution2.png";
+      imageElement2.height = 540;
+      imageElement2.width = 990;
+
+      var puzzleImageElement = document.getElementById("puzzleImage");
+      puzzleImageElement.parentNode.replaceChild(imageElement1, puzzleImageElement);
+
+      var dynamicImageElement = document.getElementById("dynamicImage");
+      dynamicImageElement.parentNode.replaceChild(imageElement2, dynamicImageElement);
+    }
+    function Restart() 
+    {
+      location.reload(); // Refresh the page
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      audioElement.play();
+    });
+  </script>
+</head>
+<body>
+  <div class="image1">
+    <img id="puzzleImage" src="/images/Puzzle7/Puzzle7.png" height="540" width="990">
+  </div>
+  <div class="image2">
+    <img id="dynamicImage" src="/images/Puzzle7/Puzzle7-2.png" height="540" width="990">
+    <input type="image" class="hints-tab" src="/images/Tabs/HintsTab.png" onclick="changehint()" height="80" width="220">
+    <input type="image" class="solution-tab" src="/images/Tabs/SubmitTab.png" onclick="Answer()" height="120" width="220">
+    <input type="image" class="restart-tab" src="/images/Tabs/RestartTab.png" onclick="Restart()" height="80" width="220">
+    
+  </div>
+  <label>Answer:</label>
+  <input id="Answer">
+  <button onclick="redirectToDashboard()">Go to Dashboard</button>
+
+</body>
+</html>

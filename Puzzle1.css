@@ -1,0 +1,56 @@
+.image1 {
+  background-image: url("/images/Puzzle1/Puzzle1.png");
+  background-size: cover;
+  height: 540px;
+  width: 990px;
+}
+
+.image2 {
+  position: relative;
+  height: 540px;
+  width: 990px;
+  overflow: hidden;
+}
+
+.image2 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image2 .hints-tab {
+  position: absolute;
+  top: 7.3%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+}
+
+.image2 .solution-tab {
+  position: absolute;
+  top: 87.8%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+}
+
+.image2 .restart-tab {
+  position: absolute;
+  top: 55%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body 
+{ 
+  background-color: black; 
+}
+label {
+  color: red;
+}
